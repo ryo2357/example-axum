@@ -1,0 +1,21 @@
+CREATE TABLE IF NOT EXISTS investments (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time TEXT NOT NULL,
+    product_num INTEGER NOT NULL,
+    work_num INTEGER NOT NULL,
+    machine_num INTEGER NOT NULL,
+    lot_num INTEGER NOT NULL,
+    line_str TEXT NOT NULL,
+    upper_limit INTEGER NOT NULL,
+    lower_limit INTEGER NOT NULL,
+    instrumentation_times INTEGER NOT NULL,
+    is_condition_change BOOLEAN NOT NULL,
+    change_upper_limit INTEGER NOT NULL,
+    change_lower_limit INTEGER NOT NULL,
+    first_measured_value INTEGER NOT NULL,
+    first_measure_decision BOOLEAN NOT NULL,
+    second_measured_value INTEGER NOT NULL,
+    second_measure_decision BOOLEAN NOT NULL,
+    third_measured_value INTEGER NOT NULL,
+    third_measure_decision BOOLEAN NOT NULL
+);

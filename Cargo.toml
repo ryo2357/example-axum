@@ -1,0 +1,29 @@
+[package]
+name = "axum_example"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+# initialize
+log = "0.4.0"
+log4rs = "1.2.0"
+chrono = "0.4.22"
+serde = "^1.0"
+serde_derive = "^1.0"
+confy = "^0.4"
+once_cell = "1.16.0"
+
+anyhow = { version = "1.0", default-features = false }
+
+
+# axum
+axum = {version = "0.5.15", features = ["macros"]}
+tokio = {version = "1.21.0", features = ["full"]}
+
+# Axum_Database_Sessions
+# https://github.com/AscendingCreations/AxumSessions
+axum_database_sessions = { version = "4.1.0", features = [ "sqlite-rustls"] }
+# tokio + rustls
+sqlx = { version = "0.6", features = [ "runtime-tokio-rustls" ] }
