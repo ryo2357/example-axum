@@ -8,21 +8,20 @@ use sqlx::SqlitePool;
 
 #[derive(Clone)]
 pub struct Db(SqlitePool);
+// Newtypeパターン
 
 // データベースファイルが場ない場合、schema.sqlからファイルを作製
-pub async fn connect(path: &str) -> Result<Db,String> {
+pub async fn connect(path: &str) -> anyhow::Result<Db> {
     let options = SqliteConnectOptions::new()
         .filename(path)
         .create_if_missing(true);
 
     let pool = SqlitePool::connect_with(options)
-        .await
-        .unwrap_or_else(|_| panic!("when SqlitePool::connect_with(options)"));
+        .await?;
 
     sqlx::query(include_str!("db/schema.sql"))
         .execute(&pool)
-        .await
-        .unwrap_or_else(|_| panic!("when sqlx::query(include_str!())"));
+        .await?;
 
     Ok(Db(pool))
 }

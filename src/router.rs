@@ -7,7 +7,7 @@ pub struct PostData {
     product_num: String,
     work_num: String,
     machine_num: String,
-    lot_num: String,
+    pub lot_num: String,
     line_str: String,
     upper_limit: String,
     lower_limit: String,
