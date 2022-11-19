@@ -6,9 +6,9 @@ use axum::http::StatusCode;
 use sqlx::sqlite::SqliteConnectOptions;
 use sqlx::SqlitePool;
 
-#[derive(Clone)]
+// #[derive(Clone)]
 pub struct Db(SqlitePool);
-// Newtypeパターン
+// NewTypeパターン
 
 // データベースファイルが場ない場合、schema.sqlからファイルを作製
 pub async fn connect(path: &str) -> anyhow::Result<Db> {
