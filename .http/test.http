@@ -1,0 +1,54 @@
+###
+http://localhost:4000/output_data
+
+###
+POST http://localhost:4000/
+
+###
+# strigの単体送信
+POST http://localhost:4000/
+
+TEST
+
+###
+# パースできないJSONは関数ないに入らない
+# レスポンスで　422　コードがレスポンス
+
+POST http://localhost:4000/post_test
+content-type: application/json
+
+{
+    "id": 1,
+    "name": "tanaka",
+    "attribute": {
+        "gender": "male",
+        "phone_number": "xxxxxxxxxxx",
+        "birth": "1991/01/01"
+    }
+}
+
+###
+#　最終行にカンマがあるとNGNG
+POST http://localhost:4000/insert_data
+content-type: application/json
+
+{
+    "time": "2022-11-17 09:45:55.308",
+    "product_num": 636578588,
+    "work_num": 55555,
+    "machine_num": 22,
+    "lot_num": 4444,
+    "line_str": "A",
+    "upper_limit": 4444,
+    "lower_limit": 4444,
+    "instrumentation_times": 3,
+    "is_condition_change": false,
+    "change_upper_limit": 4444,
+    "change_lower_limit": 4444,
+    "first_measured_value": 4444,
+    "first_measure_decision": true,
+    "second_measured_value": 4444,
+    "second_measure_decision": true,
+    "third_measured_value": 4444,
+    "third_measure_decision": true
+}

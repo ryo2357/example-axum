@@ -43,7 +43,7 @@ pub(crate) async fn create_user(
     Json(payload): Json<CreateUser>,
 ) -> Result<axum::Json<User>, (StatusCode, String)> {
     sqlx::query_as::<_, User>(&format!(
-        "INSERT INTO public.user (username, password) VALUES('{}', '{}') RETURNING *;",
+        "INSERT INTO public.user (username, password) VALUES('{}', '{}') RETURNING id;",
         payload.username, payload.password
     ))
     .fetch_one(&pool)
@@ -75,3 +75,4 @@ pub async fn create_user(
 ```
 
 [backend-modules/admin_service.rs at 7f5b48140b563c2f84a590bbc4adb03e032ea69b · ming900518/backend-modules](https://github.com/ming900518/backend-modules/blob/7f5b48140b563c2f84a590bbc4adb03e032ea69b/user_info/src/admin_service.rs)改行もできる
+

@@ -3,3 +3,5 @@
 /config
 
 example.db
+
+/db/*.db

@@ -9,6 +9,7 @@ const NAME: &'static str = env!("CARGO_PKG_NAME");
 #[derive(Serialize, Deserialize, Debug)]
 pub struct AppConfig { 
     pub url: String,
+    pub database_path: String,
 }
 // フィールドもpub にしないとアクセスできない
 
@@ -16,6 +17,7 @@ impl Default for AppConfig {
     fn default() -> Self {
         Self {
             url: "127.0.0.1:4000".to_string(),
+            database_path: "db/test.db".to_string(),
         }
     }
 }
