@@ -13,6 +13,7 @@ use sqlx::SqlitePool;
 mod initialize;
 use initialize::CONFIG as CONFIG;
 mod handler;
+mod utils;
 // mod database;
 
 #[tokio::main]
@@ -25,14 +26,13 @@ async fn main() -> anyhow::Result<()> {
 
 
     let mut options = SqliteConnectOptions::new()
-      .filename(db_path)
-      .create_if_missing(true);
+        .filename(db_path)
+        .create_if_missing(true);
     // sqlxからのロギングを無視
     options.disable_statement_logging();
       
 
-    let pool = SqlitePool::connect_with(options)
-        .await?;
+    let pool = SqlitePool::connect_with(options).await?;
 
     // フォルダがないError: error returned from database: (code: 14) unable to open database file
     // フォルダはあるがファイルはない⇒からのDBファイルが生成される
@@ -43,6 +43,7 @@ async fn main() -> anyhow::Result<()> {
         .route("/post_test", post(handler::post_test))
         .route("/insert_data", post(handler::insert_data))
         .route("/output_data",get(handler::output_data))
+        .route("/output_25h_data",get(handler::output_25h_data))
         .layer(Extension(pool));
 
     info!("Server start.");
